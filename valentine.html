@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentine's Day Vinyl Record Player</title>
+    <link rel="stylesheet" href="valentine-vinyl.css" />
+  </head>
+  <body>
+    <!-- Pantalla de la contraseña que se muestra primero -->
+    <div class="overlay" id="password-overlay">
+      <div class="password-box">
+        <h2>Introduce la contraseña</h2>
+        <input type="password" id="password" placeholder="Contraseña secreta" />
+        <button id="submit-password">Entrar</button>
+        <p id="error-message" style="display:none; color: red;">Contraseña incorrecta, intenta de nuevo.</p>
+      </div>
+    </div>
+
+    <!-- Contenido principal de la página -->
+    <div class="record-player" id="content" style="display: none;">
+      <div id="player-container"></div>
+      <button id="play-button">Play</button>
+      <audio id="love-song" src="song.mp3"></audio>
+      <h4>I have loved you since we were eighteen (18)</h4>
+      <div id="valentine-note" class="hidden">
+        Will you be my Valentine?
+      </div>
+      <script src="valentine-vinyl.js"></script>
+    </div>
+
+    <script>
+      const correctPassword = "18082021"; // Cambia esto por tu contraseña
+
+      document.getElementById("submit-password").addEventListener("click", function() {
+        const passwordInput = document.getElementById("password").value;
+        const errorMessage = document.getElementById("error-message");
+
+        if (passwordInput === correctPassword) {
+          // Si la contraseña es correcta, oculta el cuadro de la contraseña y muestra el contenido
+          document.getElementById("password-overlay").style.display = "none";
+          document.getElementById("content").style.display = "block"; // Muestra el contenido de la página
+        } else {
+          // Si la contraseña es incorrecta, muestra el mensaje de error
+          errorMessage.style.display = "block";
+        }
+      });
+    </script>
+  </body>
+</html>
